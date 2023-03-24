@@ -1,6 +1,6 @@
 const startGameBtn = document.querySelector(".start-game-button");
 startGameBtn.addEventListener("click", handleStartGameBtnClick);
-const theme = new Audio("./theme.mp3");
+const theme = new Audio("./audio/theme.mp3");
 
 const global = {
   playerChoice: null,
@@ -81,7 +81,7 @@ function chooseAttack() {
 }
 
 function bubbleNoise() {
-  const bubble = new Audio("./bubble.mp3");
+  const bubble = new Audio("./audio/bubble.mp3");
   bubble.volume = 0.3;
   bubble.play();
 }
@@ -176,10 +176,10 @@ function createPlayerAndComputer() {
 }
 
 function createCountDown() {
-  const one = new Audio("./1.mp3");
-  const two = new Audio("./2.mp3");
-  const three = new Audio("./3.mp3");
-  const appear = new Audio("./appear.mp3");
+  const one = new Audio("./audio/1.mp3");
+  const two = new Audio("./audio/2.mp3");
+  const three = new Audio("./audio/3.mp3");
+  const appear = new Audio("./audio/appear.mp3");
   appear.volume = 0.3;
   one.volume = 0.08;
   two.volume = 0.08;
@@ -220,10 +220,10 @@ function changeHands() {
     case "rock":
       break;
     case "paper":
-      player.style.backgroundImage = `url('./paper.png')`;
+      player.style.backgroundImage = `url('./images/paper.png')`;
       break;
     case "scissors":
-      player.style.backgroundImage = `url("./scissors.png")`;
+      player.style.backgroundImage = `url("./images/scissors.png")`;
       break;
   }
 
@@ -231,10 +231,10 @@ function changeHands() {
     case "rock":
       break;
     case "paper":
-      computer.style.backgroundImage = `url("./paper-reversed.png")`;
+      computer.style.backgroundImage = `url("./images/paper-reversed.png")`;
       break;
     case "scissors":
-      computer.style.backgroundImage = `url("./scissors-reversed.png")`;
+      computer.style.backgroundImage = `url("./images/scissors-reversed.png")`;
       break;
   }
 }
@@ -261,11 +261,11 @@ function determineWinner() {
 
 function createModal() {
   if (global.winner === "You Win!") {
-    const ohyeah = new Audio("./ohyeah.mp3");
+    const ohyeah = new Audio("./audio/ohyeah.mp3");
     ohyeah.play();
   }
   if (global.winner === "Computer Wins!") {
-    const lost = new Audio("./lost.mp3");
+    const lost = new Audio("./audio/lost.mp3");
     lost.volume = 0.5;
     lost.play();
   }
@@ -326,7 +326,7 @@ function outcomeAnimation() {
 function playerRockWin() {
   const player = document.querySelector(".player");
   const computer = document.querySelector(".computer");
-  const punch = new Audio("./punch.m4a");
+  const punch = new Audio("./audio/punch.m4a");
   punch.volume = 0.08;
   player.classList.add("player-rock-smash");
   computer.classList.add("computer-spinning-scissors");
@@ -340,8 +340,8 @@ function playerRockWin() {
 
 function playerPaperWin() {
   const player = document.querySelector(".player");
-  const stretch = new Audio("./stretch.mp3");
-  const paper = new Audio("./paper.mp3");
+  const stretch = new Audio("./audio/stretch.mp3");
+  const paper = new Audio("./audio/paper.mp3");
   paper.volume = 0.5;
   player.classList.add("player-paper-cover");
   setTimeout(() => {
@@ -358,13 +358,13 @@ function playerPaperWin() {
 function playerScissorsWin() {
   const player = document.querySelector(".player");
   const computer = document.querySelector(".computer");
-  const knife = new Audio("./knife.mp3");
-  const fire = new Audio("./fire.mp3");
+  const knife = new Audio("./audio/knife.mp3");
+  const fire = new Audio("./audio/fire.mp3");
   fire.volume = 0.3;
   knife.volume = 0.5;
   setTimeout(() => {
     player.style.transform = "translate(50px,10px)";
-    computer.style.backgroundImage = `url("./paper-reversed-slice1.png")`;
+    computer.style.backgroundImage = `url("./images/paper-reversed-slice1.png")`;
     knife.play();
   }, 800);
   setTimeout(() => {
@@ -372,7 +372,7 @@ function playerScissorsWin() {
   }, 1300);
   setTimeout(() => {
     player.style.transform = "translate(50px,10px)";
-    computer.style.backgroundImage = `url("./paper-reversed-slice2.png")`;
+    computer.style.backgroundImage = `url("./images/paper-reversed-slice2.png")`;
     knife.play();
   }, 1800);
   setTimeout(() => {
@@ -380,7 +380,7 @@ function playerScissorsWin() {
   }, 2300);
   setTimeout(() => {
     player.style.transform = "translate(50px,10px)";
-    computer.style.backgroundImage = `url("./paper-reversed-slice3.png")`;
+    computer.style.backgroundImage = `url("./images/paper-reversed-slice3.png")`;
     knife.play();
   }, 2800);
   setTimeout(() => {
@@ -398,7 +398,7 @@ function playerScissorsWin() {
 function computerRockWin() {
   const player = document.querySelector(".player");
   const computer = document.querySelector(".computer");
-  const punch = new Audio("./punch.m4a");
+  const punch = new Audio("./audio/punch.m4a");
   punch.volume = 0.08;
   computer.classList.add("computer-rock-smash");
   player.classList.add("player-spinning-scissors");
@@ -412,8 +412,8 @@ function computerRockWin() {
 
 function computerPaperWin() {
   const computer = document.querySelector(".computer");
-  const stretch = new Audio("./stretch.mp3");
-  const paper = new Audio("./paper.mp3");
+  const stretch = new Audio("./audio/stretch.mp3");
+  const paper = new Audio("./audio/paper.mp3");
   paper.volume = 0.5;
   computer.classList.add("computer-paper-cover");
   setTimeout(() => {
@@ -430,13 +430,13 @@ function computerPaperWin() {
 function computerScissorsWin() {
   const player = document.querySelector(".player");
   const computer = document.querySelector(".computer");
-  const knife = new Audio("./knife.mp3");
-  const fire = new Audio("./fire.mp3");
+  const knife = new Audio("./audio/knife.mp3");
+  const fire = new Audio("./audio/fire.mp3");
   fire.volume = 0.3;
   knife.volume = 0.5;
   setTimeout(() => {
     computer.style.transform = "translate(-50px,10px)";
-    player.style.backgroundImage = `url("./paper-slice1.png")`;
+    player.style.backgroundImage = `url("./images/paper-slice1.png")`;
     knife.play();
   }, 800);
   setTimeout(() => {
@@ -444,7 +444,7 @@ function computerScissorsWin() {
   }, 1300);
   setTimeout(() => {
     computer.style.transform = "translate(-50px,10px)";
-    player.style.backgroundImage = `url("./paper-slice2.png")`;
+    player.style.backgroundImage = `url("./images/paper-slice2.png")`;
     knife.play();
   }, 1800);
   setTimeout(() => {
@@ -452,7 +452,7 @@ function computerScissorsWin() {
   }, 2300);
   setTimeout(() => {
     computer.style.transform = "translate(-50px,10px)";
-    player.style.backgroundImage = `url("./paper-slice3.png")`;
+    player.style.backgroundImage = `url("./images/paper-slice3.png")`;
     knife.play();
   }, 2800);
   setTimeout(() => {
