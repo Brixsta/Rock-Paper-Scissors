@@ -1,0 +1,519 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Rubik", sans-serif;
+}
+
+h1 {
+  font-size: 60px;
+  text-align: center;
+  margin-bottom: -8px;
+  user-select: none;
+  position: absolute;
+}
+
+.wrapper {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+  overflow: hidden;
+}
+
+.start-game-button {
+  background-image: url("./rock.png");
+  background-size: cover;
+  background-color: white;
+  padding: 0;
+  border: 0;
+  height: 600px;
+  width: 600px;
+  user-select: none;
+}
+
+.start-game-button:hover {
+  cursor: pointer;
+}
+
+.choose-attack-container {
+  width: 550px;
+  background-color: #4285f4;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100px;
+  flex-wrap: wrap;
+  padding: 30px;
+  border: solid 2px rgb(41, 41, 41);
+  box-shadow: 0px 0px 0px 10px white, 0px 0px 0px 12px rgb(41, 41, 41),
+    0px 0px 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.choose-attack-title {
+  height: 70px;
+  width: 80%;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 50px;
+  top: -125px;
+  border: solid 2px rgb(41, 41, 41);
+  box-shadow: 0px 0px 0px 10px white, 0px 0px 0px 12px rgb(41, 41, 41),
+    0px 0px 10px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 100px;
+  background-color: #4285f4;
+  color: white;
+}
+
+.rock-attack-container,
+.paper-attack-container,
+.scissors-attack-container {
+  width: 33.333%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.rock-attack-button,
+.paper-attack-button,
+.scissors-attack-button {
+  border: solid 2px rgb(41, 41, 41);
+  height: 130px;
+  width: 130px;
+  border-radius: 50%;
+  background-color: white;
+  transition: all ease-in 200ms;
+}
+
+.rock-attack-button {
+  background-image: url("./rock.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 90%;
+}
+
+.paper-attack-button {
+  background-image: url("./paper.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 85%;
+}
+
+.scissors-attack-button {
+  background-image: url("./scissors.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 80%;
+}
+
+.rock-attack-button:hover,
+.paper-attack-button:hover,
+.scissors-attack-button:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+.battle-container {
+  width: 800px;
+  height: 450px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.player-title {
+  font-size: 40px;
+  width: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  position: absolute;
+  margin-right: -50px;
+  border: solid 2px rgb(41, 41, 41);
+  box-shadow: 0px 0px 0px 10px white, 0px 0px 0px 12px rgb(41, 41, 41),
+    0px 0px 10px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 100px;
+  color: white;
+  background-color: #4285f4;
+  padding: 10px;
+  margin-left: 50px;
+}
+
+.computer-title {
+  font-size: 40px;
+  width: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  right: 0;
+  position: absolute;
+  margin-left: -50px;
+  border: solid 2px rgb(41, 41, 41);
+  box-shadow: 0px 0px 0px 10px white, 0px 0px 0px 12px rgb(41, 41, 41),
+    0px 0px 10px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 100px;
+  color: white;
+  background-color: #4285f4;
+  padding: 10px;
+  margin-right: 50px;
+}
+
+.player {
+  height: 300px;
+  width: 300px;
+  background-image: url("rock.png");
+  background-size: cover;
+  position: absolute;
+  left: 0;
+  animation-name: player-hand;
+  animation-duration: 1500ms;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 3;
+  margin-left: 50px;
+  transition: all ease-in 200ms;
+}
+
+.computer {
+  height: 300px;
+  width: 300px;
+  background-image: url("rock-reversed.png");
+  background-size: cover;
+  position: absolute;
+  right: 0;
+  animation-name: computer-hand;
+  animation-duration: 1500ms;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 3;
+  margin-right: 50px;
+  transition: all ease-in 200ms;
+}
+
+.count-down-text {
+  position: absolute;
+  width: 800px;
+  height: 100px;
+  bottom: -60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 80px;
+  transition: all ease-in 500ms;
+  animation: small-to-big;
+  animation-duration: 1500ms;
+  animation-timing-function: ease-in;
+  animation-fill-mode: all;
+  animation-iteration-count: infinite;
+  transform: scale(0);
+}
+
+.modal {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  opacity: 0.8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.modal-text {
+  min-width: 300px;
+  font-size: 80px;
+  color: white;
+  position: absolute;
+  z-index: 3000;
+  text-align: center;
+}
+
+.modal-text:hover,
+.modal:hover {
+  cursor: pointer;
+}
+
+.player-rock-smash {
+  animation-name: player-rock-smash;
+  animation-duration: 1500ms;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+  animation-delay: 800ms;
+}
+
+.computer-rock-smash {
+  animation-name: computer-rock-smash;
+  animation-duration: 1500ms;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+  animation-delay: 800ms;
+}
+
+.player-paper-cover {
+  animation-name: player-paper-cover;
+  animation-duration: 2000ms;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+  animation-delay: 800ms;
+}
+
+.computer-paper-cover {
+  animation-name: computer-paper-cover;
+  animation-duration: 2000ms;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+  animation-delay: 800ms;
+}
+
+.computer-spinning-scissors {
+  animation-name: computer-spinning-scissors;
+  animation-duration: 1000ms;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+  animation-delay: 1400ms;
+}
+
+.player-spinning-scissors {
+  animation-name: player-spinning-scissors;
+  animation-duration: 1000ms;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+  animation-delay: 1400ms;
+}
+
+.fade-out {
+  animation-name: fade-out;
+  animation-timing-function: ease-out;
+  animation-duration: 1000ms;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+}
+
+@keyframes small-to-big {
+  0% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+
+  50% {
+    transform: scale(1.5);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+}
+
+@keyframes player-hand {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(20px, 100px);
+  }
+
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes player-rock-smash {
+  0% {
+  }
+
+  15% {
+    transform: translate(-100px, -50px);
+  }
+
+  50% {
+    transform: translate(300px, 50px);
+  }
+
+  100% {
+    transform: translate(300px, 50px);
+  }
+}
+
+@keyframes player-paper-cover {
+  0% {
+    z-index: 1000;
+  }
+  55% {
+    transform: scale(3) translate(150px, 10px);
+    z-index: 1000;
+  }
+  60% {
+    transform: scale(3) translate(150px, -10px);
+    z-index: 1000;
+  }
+
+  65% {
+    transform: scale(3) translate(150px, 10px);
+    z-index: 1000;
+  }
+  70% {
+    transform: scale(3) translate(150px, -10px);
+    z-index: 1000;
+  }
+
+  75% {
+    transform: scale(3) translate(150px, 10px);
+    z-index: 1000;
+  }
+
+  80% {
+    transform: scale(3) translate(150px, -10px);
+    z-index: 1000;
+  }
+
+  85% {
+    transform: scale(3) translate(150px, 10px);
+    z-index: 1000;
+  }
+
+  90% {
+    transform: scale(3) translate(150px, -10px);
+    z-index: 1000;
+  }
+
+  95% {
+    transform: scale(3) translate(150px, 10px);
+    z-index: 1000;
+  }
+
+  100% {
+    transform: scale(3) translate(150px, 0px);
+    z-index: 1000;
+  }
+}
+
+@keyframes computer-hand {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(-20px, 100px);
+  }
+
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes computer-rock-smash {
+  0% {
+  }
+
+  15% {
+    transform: translate(100px, -50px);
+  }
+
+  50% {
+    transform: translate(-300px, 50px);
+  }
+
+  100% {
+    transform: translate(-300px, 50px);
+  }
+}
+
+@keyframes computer-paper-cover {
+  0% {
+    z-index: 1000;
+  }
+  55% {
+    transform: scale(3) translate(-150px, 10px);
+    z-index: 1000;
+  }
+  60% {
+    transform: scale(3) translate(-150px, -10px);
+    z-index: 1000;
+  }
+
+  65% {
+    transform: scale(3) translate(-150px, 10px);
+    z-index: 1000;
+  }
+  70% {
+    transform: scale(3) translate(-150px, -10px);
+    z-index: 1000;
+  }
+
+  75% {
+    transform: scale(3) translate(-150px, 10px);
+    z-index: 1000;
+  }
+
+  80% {
+    transform: scale(3) translate(-150px, -10px);
+    z-index: 1000;
+  }
+
+  85% {
+    transform: scale(3) translate(-150px, 10px);
+    z-index: 1000;
+  }
+
+  90% {
+    transform: scale(3) translate(-150px, -10px);
+    z-index: 1000;
+  }
+
+  95% {
+    transform: scale(3) translate(-150px, 10px);
+    z-index: 1000;
+  }
+
+  100% {
+    transform: scale(3) translate(-150px, 0px);
+    z-index: 1000;
+  }
+}
+
+@keyframes computer-spinning-scissors {
+  0% {
+  }
+
+  100% {
+    transform: translate(2000px, 100px) rotate(960deg);
+  }
+}
+
+@keyframes player-spinning-scissors {
+  0% {
+  }
+
+  100% {
+    transform: translate(-2000px, 100px) rotate(960deg);
+  }
+}
+
+@keyframes fade-out {
+  0% {
+  }
+  100% {
+    opacity: 0;
+  }
+}
