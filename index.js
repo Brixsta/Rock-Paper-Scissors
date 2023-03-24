@@ -326,7 +326,7 @@ function outcomeAnimation() {
 function playerRockWin() {
   const player = document.querySelector(".player");
   const computer = document.querySelector(".computer");
-  const punch = new Audio("./audio/punch.m4a");
+  const punch = new Audio("./audio/punch.mp3");
   punch.volume = 0.08;
   player.classList.add("player-rock-smash");
   computer.classList.add("computer-spinning-scissors");
@@ -398,7 +398,7 @@ function playerScissorsWin() {
 function computerRockWin() {
   const player = document.querySelector(".player");
   const computer = document.querySelector(".computer");
-  const punch = new Audio("./audio/punch.m4a");
+  const punch = new Audio("./audio/punch.mp3");
   punch.volume = 0.08;
   computer.classList.add("computer-rock-smash");
   player.classList.add("player-spinning-scissors");
